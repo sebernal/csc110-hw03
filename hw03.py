@@ -28,16 +28,20 @@ def read_five_ints():
         # convert to int
         # check if the int is not in the interval [0 to 10] print error
         # add the int to grades at index idx
-
+        #First get user input for the grades 
         in_str = input("Give me the next grade in [0 to 10]:")
+        #Check that the user input is only digits
         check_digit = in_str.isdigit()
+        #If user input is not only digits, print error and stop
         if check_digit == False:
                 print("Error in read_five_ints: input string is not for an integer")
                 exit()
+        #If user input is only digits, cast to integer and check that the values are between 0 and 10
         else:
             in_int = int(in_str)
             if 0<=in_int<=10:
                     grades[idx] = in_int
+        #If the grades provided are not between 0 and 10, print error and stop
             else:
                 print("Error in read_five_ints: input integer outside of range")
                 exit()
@@ -56,19 +60,24 @@ def pick_averaging_method():
     Any other input prints
     'Error in pick_averaging_method: incorrect option picked'.
     """
+    #Collect input from the user for type of average 
     avg_method = input("Pick 'a' for mean, 'b' for median, 'c' for mode: ")
+    # If user picked "a" calculate the mean for the average 
     if avg_method == "a":
         print("picked: Mean")
         average = statistics.mean(grades)
         return average
+    # If user picked "b", calculate median for the average 
     if avg_method == "b":
         print("picked: Median")
         average = statistics.median(grades)
         return average
+    # If user picked "c", calculate mode for the average  
     if avg_method == "c":
         print("picked: Mode")
         average = statistics.mode(grades)
         return  average
+    # If user did not pick a, b, or c, print error prompt 
     else:
         print("Error in pick_averaging_method: incorrect option picked")
         exit()
@@ -84,11 +93,15 @@ def pick_visualization(average):
     Any other input prints
     'Error in pick_visualization: incorrect option picked'.
     """
+    # As user to enter either 1 or 2 
     user_pick = input("Pick '1' for print average, or '2' for plot average: ")
+    # If user inputs 1 then just print the list and chosen average 
     if user_pick == "1":
         print_list_and_average(average)
+    # If the user inputs 2 print grades and annotate average 
     if user_pick == "2":
         plot_grades(average)
+    # If the user does not input 1 or 2 print error and stop 
     if user_pick!= "1" and user_pick!= "2":
         print("Error in pick_visualization: incorrect option picked")
         exit()
